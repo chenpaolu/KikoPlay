@@ -266,6 +266,7 @@ SOURCES += \
     MediaLibrary/labelitemdelegate.cpp \
     MediaLibrary/labelmodel.cpp \
     MediaLibrary/tagnode.cpp \
+    MediaServer/Emby/embyclient.cpp \
     Play/Danmu/blocker.cpp \
     Play/Danmu/common.cpp \
     Play/Danmu/danmupool.cpp \
@@ -583,6 +584,7 @@ HEADERS += \
     MediaLibrary/labelitemdelegate.h \
     MediaLibrary/labelmodel.h \
     MediaLibrary/tagnode.h \
+    MediaServer/Emby/embyclient.h \
     Play/Danmu/blocker.h \
     Play/Danmu/common.h \
     Play/Danmu/danmupool.h \
