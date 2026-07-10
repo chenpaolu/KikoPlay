@@ -32,7 +32,7 @@ namespace stefanfrings {
 #endif
 
 /**
-  The connection handler accepts incoming connections and dispatches incoming requests to to a
+  The connection handler accepts incoming connections and dispatches incoming requests to a
   request mapper. Since HTTP clients can send multiple requests before waiting for the response,
   the incoming requests are queued and processed one after the other.
   <p>
@@ -105,14 +105,14 @@ private:
 public slots:
 
     /**
-      Received from from the listener, when the handler shall start processing a new connection.
+      Received from the listener, when the handler shall start processing a new connection.
       @param socketDescriptor references the accepted connection.
     */
     void handleConnection(const tSocketDescriptor socketDescriptor);
 
 private slots:
 
-    /** Received from the socket when a read-timeout occured */
+    /** Received from the socket when a read-timeout occurred */
     void readTimeout();
 
     /** Received from the socket when incoming data can be read */

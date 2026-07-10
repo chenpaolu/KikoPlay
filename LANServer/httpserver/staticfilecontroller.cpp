@@ -7,6 +7,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QDateTime>
+#include <QUrl>
 
 using namespace stefanfrings;
 
@@ -60,21 +61,45 @@ void StaticFileController::service(HttpRequest &request, HttpResponse &response)
         mutex.unlock();
         // The file is not in cache.
         Logger::logger()->log(Logger::LANServer, "StaticFileController: Cache miss for %s",path.data());
-        // Forbid access to files outside the docroot directory
-        if (path.contains("/.."))
+        // Forbid access to files outside the docroot directory.
+        QString requestedPath;
+        if (docroot.startsWith(":/") || docroot.startsWith("qrc://"))
         {
-            Logger::logger()->log(Logger::LANServer, "StaticFileController: detected forbidden characters in path %s",path.data());
-            response.setStatus(403,"forbidden");
-            response.write("403 forbidden",true);
-            return;
+            if (path.contains("/.."))
+            {
+                Logger::logger()->log(Logger::LANServer, "StaticFileController: detected forbidden path %s", path.data());
+                response.setStatus(403,"forbidden");
+                response.write("403 forbidden",true);
+                return;
+            }
+            if (QFileInfo(docroot+path).isDir())
+            {
+                path+="/index.html";
+            }
+            requestedPath = docroot+path;
         }
-        // If the filename is a directory, append index.html.
-        if (QFileInfo(docroot+path).isDir())
+        else
         {
-            path+="/index.html";
+            const QString decodedPath = QUrl::fromPercentEncoding(path);
+            const QString canonicalDocroot = QFileInfo(docroot).canonicalFilePath();
+            QFileInfo requestedFile(QDir(canonicalDocroot).filePath(decodedPath.mid(1)));
+            if (requestedFile.isDir())
+            {
+                requestedFile = QFileInfo(QDir(requestedFile.filePath()).filePath("index.html"));
+                path += "/index.html";
+            }
+            requestedPath = requestedFile.exists() ? requestedFile.canonicalFilePath() : requestedFile.absoluteFilePath();
+            if (canonicalDocroot.isEmpty() ||
+                !(requestedPath == canonicalDocroot || requestedPath.startsWith(canonicalDocroot + QDir::separator())))
+            {
+                Logger::logger()->log(Logger::LANServer, "StaticFileController: detected forbidden path %s", path.data());
+                response.setStatus(403,"forbidden");
+                response.write("403 forbidden",true);
+                return;
+            }
         }
         // Try to open the file
-        QFile file(docroot+path);
+        QFile file(requestedPath);
         Logger::logger()->log(Logger::LANServer, "StaticFileController: Open file %s",qPrintable(file.fileName()));
         if (file.open(QIODevice::ReadOnly))
         {

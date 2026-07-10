@@ -63,7 +63,7 @@ public:
     void readFromSocket(QTcpSocket *socket);
 
     /**
-      Get the status of this reqeust.
+      Get the status of this request.
       @see RequestStatus
     */
     RequestStatus getStatus() const;
@@ -71,18 +71,18 @@ public:
     /** Get the method of the HTTP request  (e.g. "GET") */
     QByteArray getMethod() const;
 
-    /** Get the decoded path of the HTPP request (e.g. "/index.html") */
+    /** Get the decoded path of the HTTP request (e.g. "/index.html") */
     QByteArray getPath() const;
 
     /** Get the raw path of the HTTP request (e.g. "/file%20with%20spaces.html") */
     const QByteArray& getRawPath() const;
 
-    /** Get the version of the HTPP request (e.g. "HTTP/1.1") */
+    /** Get the version of the HTTP request (e.g. "HTTP/1.1") */
     QByteArray getVersion() const;
 
     /**
       Get the value of a HTTP request header.
-      @param name Name of the header, not case-senitive.
+      @param name Name of the header, not case-sensitive.
       @return If the header occurs multiple times, only the last
       one is returned.
     */
@@ -90,7 +90,7 @@ public:
 
     /**
       Get the values of a HTTP request header.
-      @param name Name of the header, not case-senitive.
+      @param name Name of the header, not case-sensitive.
     */
     QList<QByteArray> getHeaders(const QByteArray& name) const;
 
@@ -123,7 +123,7 @@ public:
     /**
       Decode an URL parameter.
       E.g. replace "%23" by '#' and replace '+' by ' '.
-      @param source The url encoded strings
+      @param source The URL-encoded string
       @see QUrl::toPercentEncoding for the reverse direction
     */
     static QByteArray urlDecode(const QByteArray source);
