@@ -31,6 +31,9 @@ UI and playback.
 ## Next step
 
 The next step should wire `EmbyServerDialog` into the playlist UI and add a
+## Next step
+
+The next step should add an Emby server configuration dialog and a playlist
 collection type that stores stable `emby://serverId/itemId` identifiers.  The
 real stream URL should be resolved only when playback starts, because tokens,
 media source IDs, and play sessions can change.
