@@ -141,7 +141,7 @@ void HttpConnectionHandler::setBusy()
 void HttpConnectionHandler::readTimeout()
 {
 #ifdef QT_DEBUG
-    Logger::logger()->log(Logger::LANServer, "HttpConnectionHandler (%p): read timeout occured",static_cast<void*>(this));
+    Logger::logger()->log(Logger::LANServer, "HttpConnectionHandler (%p): read timeout occurred",static_cast<void*>(this));
 #endif
 
     //Commented out because QWebView cannot handle this.
@@ -166,7 +166,7 @@ void HttpConnectionHandler::disconnected()
 
 void HttpConnectionHandler::read()
 {
-    // The loop adds support for HTTP pipelinig
+    // The loop adds support for HTTP pipelining
     while (socket->bytesAvailable())
     {
         #ifdef SUPERVERBOSE
@@ -220,7 +220,7 @@ void HttpConnectionHandler::read()
             }
 
             // In case of HTTP 1.0 protocol add the Connection:close header.
-            // This ensures that the HttpResponse does not activate chunked mode, which is not spported by HTTP 1.0.
+            // This ensures that the HttpResponse does not activate chunked mode, which is not supported by HTTP 1.0.
             else
             {
                 bool http1_0=QString::compare(currentRequest->getVersion(),"HTTP/1.0",Qt::CaseInsensitive)==0;
@@ -238,7 +238,7 @@ void HttpConnectionHandler::read()
             }
             catch (...)
             {
-                Logger::logger()->log(Logger::LANServer, "HttpConnectionHandler (%p): An uncatched exception occured in the request handler",
+                Logger::logger()->log(Logger::LANServer, "HttpConnectionHandler (%p): An uncaught exception occurred in the request handler",
                                     static_cast<void*>(this));
             }
 
