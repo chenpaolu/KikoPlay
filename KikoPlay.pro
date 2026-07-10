@@ -142,6 +142,7 @@ SOURCES += \
     UI/dialogs/blockeditor.cpp \
     UI/dialogs/cliprangeedit.cpp \
     UI/dialogs/danmuview.cpp \
+    UI/dialogs/embyserverdialog.cpp \
     UI/dialogs/mpvconfediror.cpp \
     UI/dialogs/selectepisodedialog.cpp \
     UI/dialogs/subrecognizedialog.cpp \
@@ -266,6 +267,7 @@ SOURCES += \
     MediaLibrary/labelitemdelegate.cpp \
     MediaLibrary/labelmodel.cpp \
     MediaLibrary/tagnode.cpp \
+    MediaServer/Emby/embyclient.cpp \
     Play/Danmu/blocker.cpp \
     Play/Danmu/common.cpp \
     Play/Danmu/danmupool.cpp \
@@ -456,6 +458,7 @@ HEADERS += \
     UI/dialogs/blockeditor.h \
     UI/dialogs/cliprangeedit.h \
     UI/dialogs/danmuview.h \
+    UI/dialogs/embyserverdialog.h \
     UI/dialogs/mpvconfediror.h \
     UI/dialogs/selectepisodedialog.h \
     UI/dialogs/subrecognizedialog.h \
@@ -583,6 +586,7 @@ HEADERS += \
     MediaLibrary/labelitemdelegate.h \
     MediaLibrary/labelmodel.h \
     MediaLibrary/tagnode.h \
+    MediaServer/Emby/embyclient.h \
     Play/Danmu/blocker.h \
     Play/Danmu/common.h \
     Play/Danmu/danmupool.h \
