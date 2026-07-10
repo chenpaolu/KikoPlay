@@ -142,6 +142,7 @@ SOURCES += \
     UI/dialogs/blockeditor.cpp \
     UI/dialogs/cliprangeedit.cpp \
     UI/dialogs/danmuview.cpp \
+    UI/dialogs/embyserverdialog.cpp \
     UI/dialogs/mpvconfediror.cpp \
     UI/dialogs/selectepisodedialog.cpp \
     UI/dialogs/subrecognizedialog.cpp \
@@ -457,6 +458,7 @@ HEADERS += \
     UI/dialogs/blockeditor.h \
     UI/dialogs/cliprangeedit.h \
     UI/dialogs/danmuview.h \
+    UI/dialogs/embyserverdialog.h \
     UI/dialogs/mpvconfediror.h \
     UI/dialogs/selectepisodedialog.h \
     UI/dialogs/subrecognizedialog.h \

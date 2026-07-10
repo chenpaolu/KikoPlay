@@ -19,6 +19,18 @@ UI and playback.
   - `Items/{ItemId}/PlaybackInfo`
   - `Videos/{ItemId}/stream`
 
+## Second step scope
+
+- Add `EmbyServerDialog` to collect a display title, server URL, and either
+  user/password credentials or an API key.
+- Normalize the server URL before it leaves the dialog.
+- Keep passwords and API keys masked in the UI.
+- Validate that username/password mode has both fields and that API-key mode
+  has a non-empty API key.
+
+## Next step
+
+The next step should wire `EmbyServerDialog` into the playlist UI and add a
 ## Next step
 
 The next step should add an Emby server configuration dialog and a playlist
